@@ -5,12 +5,9 @@ import javax.persistence._
 
 
 @Entity
-class Sak {
+class Sak extends Object with Identitet {
   type E = javax.persistence.Entity
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  var id : Long = _
   var tittel : String = _
 
   @ManyToOne
