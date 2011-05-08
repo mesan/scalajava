@@ -7,6 +7,7 @@
 
     <class>no.mesan.sak.Sak</class>
     <class>no.mesan.sak.SakType</class>
+    <class>no.mesan.sak.Person</class>
 
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
 

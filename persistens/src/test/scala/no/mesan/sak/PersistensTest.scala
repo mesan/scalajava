@@ -29,21 +29,39 @@ class PersistensTest extends FunSuite with ShouldMatchers with DataTest {
     val st = new SakType
     st.navn = "type"
     em.persist(st)
-//    val str : java.lang.String = "aa"
-//    str.toInt
-//    "test".toInt
 
     val sak = new Sak
     sak.tittel = "tittel"
     sak.sakstype = st
     em.persist(sak)
 
-    em.flush
-    em.clear
+    em.flush()
+    em.clear()
 
     val hentetSak = em.find(classOf[Sak], sak.id)
     hentetSak should not be(sak)
     hentetSak.sakstype should not be(null)
     hentetSak.sakstype should not be(st)
+  }
+
+  test("sak med eier skal hente begge veier") {
+    val tm = new Person
+    tm.navn = "Trond Marius"
+    em.persist(tm)
+
+    val sak = new Sak
+    sak.tittel = "min tittel"
+    sak.eier = tm
+    em.persist(sak)
+
+    em.flush()
+    em.clear()
+
+    val hentetSak = em.find(classOf[Sak], sak.id)
+    hentetSak.eier should not be null
+
+    val hentetTM = em.find(classOf[Person], tm.id)
+    hentetTM.saker.size should be(1)
+    hentetTM.saker should contain(hentetSak)
   }
 }
