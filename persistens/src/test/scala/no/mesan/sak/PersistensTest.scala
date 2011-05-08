@@ -14,6 +14,7 @@ class PersistensTest extends FunSuite with ShouldMatchers with DataTest {
     sak.id should be(0)
     em.persist(sak)
     sak.id should not be(0)
+    
   }
 
   test("saktype kan lagres og få id") {
@@ -63,5 +64,6 @@ class PersistensTest extends FunSuite with ShouldMatchers with DataTest {
     val hentetTM = em.find(classOf[Person], tm.id)
     hentetTM.saker.size should be(1)
     hentetTM.saker should contain(hentetSak)
+    
   }
 }
