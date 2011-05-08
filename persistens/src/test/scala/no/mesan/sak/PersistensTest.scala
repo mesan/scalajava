@@ -1,4 +1,4 @@
-package no.mesan.sak {
+package no.mesan.sak
 
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.{Suite, BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
@@ -46,6 +46,4 @@ class PersistensTest extends FunSuite with ShouldMatchers with DataTest {
     hentetSak.sakstype should not be(null)
     hentetSak.sakstype should not be(st)
   }
-}
-
 }
